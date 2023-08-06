@@ -11,18 +11,27 @@ import Categories from './Components/Categories/Categories'
 import Cart from './Components/Cart/Cart'
 import Brands from './Components/Brands/Brands'
 import NotFound from './Components/NotFound/NotFound'
+import { useState } from 'react';
+import jwtDecode from 'jwt-decode'
 
 
 
 
 function App() {
+  const [userData, setuserData] = useState(null)
+
+  function saveUserData() {
+    let encodedToken = localStorage.getItem('userToken');
+    let decodedToken = jwtDecode(encodedToken);
+    setuserData(decodedToken);
+  }
 
   let routes = createBrowserRouter([
     {
-      path: '/', element: <Layout />, children: [
+      path: '/', element: <Layout userData={userData} setuserData={setuserData} />, children: [
         { index: true, element: <Home /> },
         { path: 'about', element: <About /> },
-        { path: 'login', element: <Login /> },
+        { path: 'login', element: <Login saveUserData={saveUserData} /> },
         { path: 'register', element: <Register /> },
         { path: 'productDetails', element: <ProductDetails /> },
         { path: 'products', element: <Products /> },
