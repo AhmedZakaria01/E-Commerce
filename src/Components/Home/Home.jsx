@@ -1,8 +1,15 @@
 import React from 'react';
 import styles from './Home.module.css';
+import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
+import CategorySlider from '../CategorySlider/CategorySlider';
+
 const Home = () => {
     return (
-        <h2> Home </h2>
+        <>
+            <CategorySlider />
+            <FeaturedProducts />
+        </>
+
     );
 }
 

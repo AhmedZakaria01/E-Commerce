@@ -34,7 +34,7 @@ function App() {
         { path: 'about', element: <ProtectedRoute><About /></ProtectedRoute> },
         { path: 'login', element: <Login saveUserData={saveUserData} /> },
         { path: 'register', element: <Register /> },
-        { path: 'productDetails', element: <ProductDetails /> },
+        { path: 'productDetails/:id', element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
         { path: 'products', element: <ProtectedRoute> <Products /></ProtectedRoute> },
         { path: 'categories', element: <ProtectedRoute><Categories /></ProtectedRoute> },
         { path: 'cart', element: <ProtectedRoute> <Cart /></ProtectedRoute> },

@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 
 :root {
   --main-color: #0aad0a;
@@ -26,9 +29,14 @@ a:hover {
   text-decoration: none;
 }
 
+.product {
+  transition: all 1s;
+}
+
 .product:hover {
   box-shadow: var(--shadow);
-  border: solid 1px var(--main-color);
+  /* border: solid 1px var(--main-color); */
+  transform: scale(1.05);
 }
 
 .product .btn {
