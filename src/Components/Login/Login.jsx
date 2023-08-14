@@ -55,7 +55,7 @@ const Login = ({ saveUserData }) => {
     return (
 
         <div className='w-50 mx-auto py-4'>
-            <h3>Register Now : </h3>
+            <h3>Login : </h3>
 
             <form className=' mx-auto' id='registerForm' onSubmit={formik.handleSubmit}>
 
@@ -74,7 +74,7 @@ const Login = ({ saveUserData }) => {
 
 
                 {messageError ? <p className='text-danger'>{messageError}</p> : null}
-                {isLoading ? <button className='btn bg-main text-white' disabled> <i className='fas fa-spinner fa-spin'> </i> </button> : <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Register</button>}
+                {isLoading ? <button className='btn bg-main text-white' disabled> <i className='fas fa-spinner fa-spin'> </i> </button> : <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Login</button>}
 
             </form>
         </div>

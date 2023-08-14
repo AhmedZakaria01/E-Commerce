@@ -14,8 +14,10 @@ import NotFound from './Components/NotFound/NotFound'
 import { useState } from 'react';
 import jwtDecode from 'jwt-decode'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
-
-
+import { CartContextProvider } from './Context/CartContext';
+import { Toaster } from 'react-hot-toast';
+import Checkout from './Components/Checkout/Checkout';
+import { Offline, Online } from "react-detect-offline";
 
 
 function App() {
@@ -39,6 +41,7 @@ function App() {
         { path: 'categories', element: <ProtectedRoute><Categories /></ProtectedRoute> },
         { path: 'cart', element: <ProtectedRoute> <Cart /></ProtectedRoute> },
         { path: 'brands', element: <ProtectedRoute><Brands /></ProtectedRoute> },
+        { path: 'checkout', element: <ProtectedRoute><Checkout /></ProtectedRoute> },
         { path: '*', element: <NotFound /> },
       ]
     }
@@ -47,7 +50,12 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={routes} />
+      <Offline> <div className='network'>  You are currently offline ... </div></Offline>
+      <CartContextProvider>
+        <Toaster />
+        <RouterProvider router={routes} />
+      </CartContextProvider>
+
     </>
   );
 }
