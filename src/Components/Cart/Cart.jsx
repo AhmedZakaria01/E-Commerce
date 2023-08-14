@@ -3,6 +3,7 @@ import styles from './Cart.module.css';
 import { cartContexct } from '../../Context/CartContext';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 const Cart = () => {
     let { getLoggedUserCart, removeItem, updateProductCount, clearUserCart } = useContext(cartContexct)
@@ -53,6 +54,12 @@ const Cart = () => {
 
     return (
         <>
+            <div className="application">
+                <Helmet>
+                    <title>Cart Details</title>
+                </Helmet>
+                
+            </div>
             {cartDetails ? <div className='bg-main-light p-4 my-4'>
                 <h3>Shop Cart</h3>
                 <h6 className='text-main'>Total Cart Price :  {cartDetails.totalCartPrice} EGP</h6>
@@ -80,7 +87,7 @@ const Cart = () => {
                     </div>
                 )}
 
-                    <Link className='btn bg-main text-white' to={'/checkout'}>Checkout</Link>
+                <Link className='btn bg-main text-white' to={'/checkout'}>Checkout</Link>
             </div> : null}
             <h2> Cart </h2>
         </>

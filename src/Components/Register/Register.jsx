@@ -4,6 +4,7 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -57,47 +58,54 @@ const Register = () => {
 
 
     return (
+        <>
+            <div className="application">
+                <Helmet>
+                    <title>Register</title>
+                </Helmet>
+            </div>
+            <div className='w-50 mx-auto py-4'>
+                <h3>Register Now : </h3>
 
-        <div className='w-50 mx-auto py-4'>
-            <h3>Register Now : </h3>
-
-            <form className=' mx-auto' id='registerForm' onSubmit={formik.handleSubmit}>
-                <label htmlFor='name'>Name</label>
-                <input className={`form-control mb-2 ${styles.formControl}   ${formik.errors.name && formik.touched.name ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.name} type='text' name='name' id='name'></input>
-                {formik.errors.name && formik.touched.name ? <p className='text-danger'>{formik.errors.name}</p> : ''}
-
-
-
-                <label htmlFor='phone'>Phone</label>
-                <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.phone && formik.touched.phone ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.phone} type='tel' name='phone' id='phone'></input>
-                {formik.errors.phone && formik.touched.phone ? <p className='text-danger'>{formik.errors.phone}</p> : ''}
-
-
-
-                <label htmlFor='email'>Email</label>
-                <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.email && formik.touched.email ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email} type='email' name='email' id='email'></input>
-                {formik.errors.email && formik.touched.email ? <p className='text-danger'>{formik.errors.email}</p> : ''}
+                <form className=' mx-auto' id='registerForm' onSubmit={formik.handleSubmit}>
+                    <label htmlFor='name'>Name</label>
+                    <input className={`form-control mb-2 ${styles.formControl}   ${formik.errors.name && formik.touched.name ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.name} type='text' name='name' id='name'></input>
+                    {formik.errors.name && formik.touched.name ? <p className='text-danger'>{formik.errors.name}</p> : ''}
 
 
 
-                <label htmlFor='password'>Password</label>
-                <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.password && formik.touched.password ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password} type='password' name='password' id='password'></input>
-                {formik.errors.password && formik.touched.password ? <p className='text-danger'>{formik.errors.password}</p> : ''}
+                    <label htmlFor='phone'>Phone</label>
+                    <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.phone && formik.touched.phone ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.phone} type='tel' name='phone' id='phone'></input>
+                    {formik.errors.phone && formik.touched.phone ? <p className='text-danger'>{formik.errors.phone}</p> : ''}
 
 
 
-                <label htmlFor='rePassword'>Confirm Password</label>
-                <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.rePassword && formik.touched.rePassword ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.rePassword} type='password' name='rePassword' id='rePassword'></input>
-                {formik.errors.rePassword && formik.touched.rePassword ? <p className='text-danger'>{formik.errors.rePassword}</p> : ''}
+                    <label htmlFor='email'>Email</label>
+                    <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.email && formik.touched.email ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email} type='email' name='email' id='email'></input>
+                    {formik.errors.email && formik.touched.email ? <p className='text-danger'>{formik.errors.email}</p> : ''}
 
 
-                {messageError ? <p className='text-danger'>{messageError}</p> : null}
-                {/* {console.log(isLoading)} */}
-                {isLoading ? <button className='btn bg-main text-white' disabled> <i className='fas fa-spinner fa-spin'> </i> </button> : <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Register</button>}
+
+                    <label htmlFor='password'>Password</label>
+                    <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.password && formik.touched.password ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password} type='password' name='password' id='password'></input>
+                    {formik.errors.password && formik.touched.password ? <p className='text-danger'>{formik.errors.password}</p> : ''}
 
 
-            </form>
-        </div>
+
+                    <label htmlFor='rePassword'>Confirm Password</label>
+                    <input className={`form-control mb-2 ${styles.formControl}  ${formik.errors.rePassword && formik.touched.rePassword ? 'border-danger' : ''} `} onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.rePassword} type='password' name='rePassword' id='rePassword'></input>
+                    {formik.errors.rePassword && formik.touched.rePassword ? <p className='text-danger'>{formik.errors.rePassword}</p> : ''}
+
+
+                    {messageError ? <p className='text-danger'>{messageError}</p> : null}
+                    {/* {console.log(isLoading)} */}
+                    {isLoading ? <button className='btn bg-main text-white' disabled> <i className='fas fa-spinner fa-spin'> </i> </button> : <button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white'>Register</button>}
+
+
+                </form>
+            </div>
+        </>
+
     );
 }
 

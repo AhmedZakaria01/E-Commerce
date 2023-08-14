@@ -3,6 +3,7 @@ import styles from './ProductDetails.module.css';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Slider from 'react-slick';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -49,7 +50,11 @@ const ProductDetails = () => {
 
     return (
         <>
-
+            <div className="application">
+                <Helmet>
+                    <title>Product Details</title>
+                </Helmet>
+            </div>
 
 
             {!isLoading && productDetails ? <div className='row m-0 container mx-auto'>
